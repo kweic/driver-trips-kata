@@ -1,7 +1,7 @@
-package io.github.kweic.dto;
+package io.github.kweic.dto
 
 import io.github.kweic.model.Driver
-import io.github.kweic.util.SpeedCalculator;
+import io.github.kweic.util.SpeedCalculator
 
 class DriverDto {
     String name

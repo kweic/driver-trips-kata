@@ -1,7 +1,7 @@
 package io.github.kweic
 
 import io.github.kweic.dto.DriverDto
-import io.github.kweic.model.Driver;
+import io.github.kweic.model.Driver
 import io.github.kweic.service.DriverRegistry
 import io.github.kweic.util.ParsedDriverInput
 import spock.lang.Shared
