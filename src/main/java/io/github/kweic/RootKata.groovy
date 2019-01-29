@@ -9,7 +9,7 @@ class RootKata {
 
         DriverRegistry driverRegistry = new DriverRegistry()
         
-        new File("src/main/resources/input.txt").readLines().each{ line ->
+        new File(args[0]).readLines().each{ line ->
             ParsedDriverInput driverInput = ParsedDriverInput.create(line)
             driverRegistry.readInput(driverInput)
         }
