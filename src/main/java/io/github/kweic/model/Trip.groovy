@@ -1,5 +1,8 @@
 package io.github.kweic.model
 
+import static io.github.kweic.TripValidation.*
+import io.github.kweic.util.SpeedCalculator
+
 import java.time.LocalTime
 import static java.time.temporal.ChronoUnit.MINUTES
 
@@ -18,5 +21,14 @@ class Trip {
 
     def getDistance(){
         return distance
+    }
+
+    double getAverageSpeed(){
+        return SpeedCalculator.getAverageSpeed(getTotalDriveTimeMinutes(), distance as Long)
+    }
+
+    boolean hasValidSpeed() {
+        double averageSpeed = getAverageSpeed()
+        return averageSpeed >= MIN_SPEED.value && averageSpeed <= MAX_SPEED.value
     }
 }

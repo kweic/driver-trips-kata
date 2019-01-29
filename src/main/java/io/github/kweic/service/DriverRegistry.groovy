@@ -1,6 +1,5 @@
 package io.github.kweic.service
 
-import io.github.kweic.CommandType
 import io.github.kweic.dto.DriverDto
 import io.github.kweic.model.Driver
 import io.github.kweic.model.Trip
@@ -29,14 +28,15 @@ class DriverRegistry {
         if(input.isAddDriver()) {
             addDriver(Driver.create(input.driverName))
         } else if(input.isAddTrip()) {
-            addTripFromInput(input)
+            Trip trip = Trip.create(input.startTime, input.endTime, input.distance)
+            if (trip.hasValidSpeed()) {
+                addTripToDriver(input.driverName, trip)
+            }
         }
     }
 
-    def addTripFromInput(ParsedDriverInput input) {
-        findByName(input.driverName).addTrip(
-                Trip.create(input.startTime, input.endTime, input.distance)
-        )
+    def addTripToDriver(String driverName, Trip trip) {
+        findByName(driverName).addTrip( trip )
     }
 
     List<DriverDto> getDriverDtos() {
