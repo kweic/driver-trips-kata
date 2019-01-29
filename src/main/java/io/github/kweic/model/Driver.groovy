@@ -35,7 +35,6 @@ class Driver {
 
     @Override
     boolean equals(Object obj) {
-        println "doing comaprison of names"
         if(obj.class == this.class){
             return this.name.equalsIgnoreCase( ((Driver)obj).name )
         }

@@ -13,8 +13,7 @@ class Trip {
     }
 
     long getTotalDriveTimeMinutes(){
-        def minutes = MINUTES.between(start, end)
-        return minutes
+        return MINUTES.between(start, end)
     }
 
     def getDistance(){

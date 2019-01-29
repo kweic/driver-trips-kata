@@ -27,24 +27,23 @@ class DriverRegistry {
 
     def readInput(ParsedDriverInput input){
         if(input.isAddDriver()) {
-            addDriver(Driver.create(input.name))
+            addDriver(Driver.create(input.driverName))
         } else if(input.isAddTrip()) {
             addTripFromInput(input)
         }
     }
 
     def addTripFromInput(ParsedDriverInput input) {
-        findByName(input.name).addTrip(
+        findByName(input.driverName).addTrip(
                 Trip.create(input.startTime, input.endTime, input.distance)
         )
     }
 
-    List<DriverDto> driversByDistance() {
-        List<DriverDto> driverDtos = []
-        drivers.each{
-            driverDtos.add( DriverDto.create(it) )
-        }
+    List<DriverDto> getDriverDtos() {
+        return drivers.collect{ DriverDto.create(it) }
+    }
 
+    List<DriverDto> driversByDistance() {
         return driverDtos.sort{ it.totalDistance }.reverse()
     }
 

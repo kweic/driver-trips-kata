@@ -14,8 +14,8 @@ class RootKata {
             driverRegistry.readInput(driverInput)
         }
 
-        driverRegistry.driversByDistance().each{
-            println it
+        driverRegistry.driversByDistance().each{ driver ->
+            println driver
         }
     }
 }

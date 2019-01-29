@@ -24,7 +24,7 @@ class ParsedDriverInput {
         return input[0].equalsIgnoreCase(commandType.toString())
     }
 
-    String getName() {
+    String getDriverName() {
         return input[1]
     }
 
