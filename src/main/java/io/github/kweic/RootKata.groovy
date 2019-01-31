@@ -8,7 +8,7 @@ class RootKata {
     static void main(String[] args){
 
         if(args == null || args.length == 0){
-            throw new FileNotFoundException("Driver input file required.")
+            throw new FileNotFoundException("Driver input file required as program argument.")
         }
 
         DriverRegistry driverRegistry = new DriverRegistry()
