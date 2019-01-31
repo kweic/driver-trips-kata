@@ -8,7 +8,7 @@ import io.github.kweic.util.ParsedDriverInput
 class DriverRegistry {
     private Set<Driver> drivers
 
-    DriverRegistry(){
+    DriverRegistry() {
         this.drivers = []
     }
 
@@ -24,19 +24,18 @@ class DriverRegistry {
         return drivers.find{ it.name == name }
     }
 
-    def readInput(ParsedDriverInput input){
+    def readInput(ParsedDriverInput input) {
         if(input.isAddDriver()) {
             addDriver(Driver.create(input.driverName))
         } else if(input.isAddTrip()) {
-            Trip trip = Trip.create(input.startTime, input.endTime, input.distance)
-            if (trip.hasValidSpeed()) {
-                addTripToDriver(input.driverName, trip)
-            }
+            addTripByDriverName(input.driverName, Trip.create(input.startTime, input.endTime, input.distance))
         }
     }
 
-    def addTripToDriver(String driverName, Trip trip) {
-        findByName(driverName).addTrip( trip )
+    def addTripByDriverName(String driverName, Trip trip) {
+        if (trip.hasValidSpeed()) {
+            findByName(driverName).addTrip(trip)
+        }
     }
 
     List<DriverDto> getDriverDtos() {
