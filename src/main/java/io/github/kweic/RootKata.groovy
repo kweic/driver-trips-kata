@@ -7,6 +7,10 @@ class RootKata {
 
     static void main(String[] args){
 
+        if(args == null || args.length == 0){
+            throw new FileNotFoundException("Driver input file required.")
+        }
+
         DriverRegistry driverRegistry = new DriverRegistry()
         
         new File(args[0]).readLines().each{ line ->
