@@ -17,15 +17,16 @@ class Driver {
     }
 
     long getTotalDistance() {
-        if(trips.size() <= 0) return 0
-
-        return trips.sum{ it.getDistance() } as Long
+        return sumTripValue({ trips.sum{Trip t -> t.getDistance() }})
     }
 
     long getTotalTravelTime() {
-        if(trips.size() <= 0) return 0
+        return sumTripValue({ trips.sum{Trip t -> t.getTotalDriveTimeMinutes() }})
+    }
 
-        return trips.sum{ it.getTotalDriveTimeMinutes() } as Long
+    private long sumTripValue(Closure c){
+        if(trips.size() <= 0) return 0
+        return c.call(trips) as Long
     }
 
     @Override

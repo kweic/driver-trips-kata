@@ -1,8 +1,8 @@
 package io.github.kweic
 
 enum CommandType {
-    DRIVER("driver"),
-    TRIP("trip")
+    ADD_NEW_DRIVER("driver"),
+    ADD_NEW_TRIP("trip")
 
     CommandType(String v){
         this.value = v

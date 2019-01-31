@@ -15,15 +15,15 @@ class Trip {
         return new Trip(start: startTime, end: endTime, distance: distance)
     }
 
-    long getTotalDriveTimeMinutes(){
+    long getTotalDriveTimeMinutes() {
         return MINUTES.between(start, end)
     }
 
-    def getDistance(){
+    def getDistance() {
         return distance
     }
 
-    double getAverageSpeed(){
+    double getAverageSpeed() {
         return SpeedCalculator.getAverageSpeed(getTotalDriveTimeMinutes(), distance as Long)
     }
 

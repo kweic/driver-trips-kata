@@ -4,13 +4,13 @@ enum TripValidation {
     MIN_SPEED(5),
     MAX_SPEED(100)
 
-    TripValidation(int v){
+    TripValidation(int v) {
         this.value = v
     }
 
     private final int value
 
-    int getValue(){
+    int getValue() {
         return value
     }
 }

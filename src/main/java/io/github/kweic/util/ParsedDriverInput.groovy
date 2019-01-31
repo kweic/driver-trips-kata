@@ -2,6 +2,8 @@ package io.github.kweic.util
 
 import io.github.kweic.CommandType
 
+import static io.github.kweic.CommandType.*
+
 import java.time.LocalTime
 
 class ParsedDriverInput {
@@ -13,15 +15,15 @@ class ParsedDriverInput {
     }
 
     boolean isAddDriver() {
-        return isCommandOfType(CommandType.DRIVER)
+        return isCommandType(ADD_NEW_DRIVER)
     }
 
     boolean isAddTrip() {
-        return isCommandOfType(CommandType.TRIP)
+        return isCommandType(ADD_NEW_TRIP)
     }
 
-    boolean isCommandOfType(CommandType commandType) {
-        return input[0].equalsIgnoreCase(commandType.toString())
+    private boolean isCommandType(CommandType command) {
+        return input[0].equalsIgnoreCase(command.toString())
     }
 
     String getDriverName() {
@@ -29,14 +31,14 @@ class ParsedDriverInput {
     }
 
     LocalTime getStartTime() {
-        LocalTime.parse(input[2])
+        return LocalTime.parse(input[2])
     }
 
     LocalTime getEndTime() {
-        LocalTime.parse(input[3])
+        return LocalTime.parse(input[3])
     }
 
     double getDistance() {
-        input[4] as Double
+        return input[4] as Double
     }
 }
